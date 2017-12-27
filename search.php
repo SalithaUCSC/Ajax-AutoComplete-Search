@@ -1,13 +1,14 @@
 <?php
-
+// Build up DB connection including cofiguration file
 require ("dbcon.php");
 
+// Assign the search button to get data through post method
 $search = $_POST["searchBox"];
-
+// SQL query to featch the details of a country
 $sql = "SELECT * FROM countries WHERE country LIKE '$search%'";
-
+// execution of the query. Output a boolean value
 $res = mysqli_query($conn, $sql);
-
+// Take the number of rows of countries starting with the entered word phrase
 $count = mysqli_num_rows($res);
 
 ?>
@@ -46,9 +47,10 @@ $count = mysqli_num_rows($res);
 			<table class="table table-bordered">
 
 <?php
-
+// Check if there are rows matched with the query
 if($count>0)
 {
+    // Output the details within a table with Bootstrap styes
 	while($data = mysqli_fetch_assoc($res)){
 
         echo '<tr>';
@@ -65,11 +67,13 @@ if($count>0)
  		echo '</table>';
 	}
 }
+// If there are no matching countries this will displayed in the browser
 else {
 	echo "No Data";
 }
 
 ?><br>
+<!-- Return button to the input page -->
                <center>
                     <a href="index.php" class="btn btn-default">Back</a>
                 </center>
