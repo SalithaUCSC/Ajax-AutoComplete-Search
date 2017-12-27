@@ -1,9 +1,3 @@
-<?php
-
-    require("fetch.php");
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
