@@ -8,7 +8,7 @@ if(isset($_POST['search'])){
 
     $q = mysqli_real_escape_string($conn,$_POST["q"]);
     // mysql query to fetch the countries
-    $query = "SELECT country FROM countries WHERE country LIKE '$q%'"; 
+    $query = "SELECT * FROM countries WHERE country LIKE '$q%'"; 
     // execution of the query. Output a boolean value
     $res = mysqli_query($conn, $query);
     // Check if there are results matched
@@ -18,7 +18,7 @@ if(isset($_POST['search'])){
         // Display fetched all countries matched with the entered phrase
         while($row = mysqli_fetch_assoc($res)){
             // Concatenate the results to the previously started list
-            $response .= "<li class='list-group-item'>".$row['country']."</li>";
+            $response .= "<li style='height: 60px;' class='list-group-item'>"."<img src='".$row["flag"]."' "."style='height: 30px; width:50px; margin-right: 50px'".">".$row['country']."</li>";
         }
         // End the styling for fetch country list
         $response .= "</ul>";
